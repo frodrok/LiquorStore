@@ -1,0 +1,14 @@
+1. Döpa om Repository-interfacet till CrudRepository [gjort]
+
+2. Att inte ha ett eget packet för interfaces, utan lägga både interfaces och deras respektive implementationer i ett packet som hette förslagsvis repository och ha ett underpaket som heter 'impl' för implementation.
+
+[Paket] repository:
+	[P] impl
+		FileRepository
+		File...Repository
+	CrudRepository
+	...Repository
+
+3. Tömma alla ...Repository på kod förutom konstruktorn och ha en helt typgenerisk abstrakt FileRepository<T extends Storable> som implementerar CrudRepository och har hand om en typgenerisk lista i minnet och att generera ID'n för de lagrade objekten. Dessutom att skriva och läsa listorna till och från disk.
+
+4. Ett interface för att generera och hålla koll på ID'n som den som implementerar Repositoryn har hand om, nu genererar vi dom random varje gång ett objekt skapas.
